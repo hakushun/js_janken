@@ -11,19 +11,34 @@
     <header class="header">
         <h1 class="header__title">じゃんけんゲームへようこそ</h1>
     </header>
-    <main class="game">
+    <section class="game">
+        <div class="game__setting">
+            <p class="game__settingTimes">何本先取にするか：</p>
+            <select class="game__settingList" data-js="setting-times">
+                <option value=1>1</option>
+                <option value=2>2</option>
+                <option value=3>3</option>
+                <option value=4>4</option>
+                <option value=5>5</option>
+                <option value=6>6</option>
+                <option value=7>7</option>
+                <option value=8>8</option>
+                <option value=9>9</option>
+                <option value=10>10</option>
+            </select>
+            <p class="game__settingTimes">本先取</p>
+            <button class="game__btn game__btn--set" data-js="set-btn">先取回数を設定</button>
+        </div>
         <div class="game__title">
-            <p data-js="game-title">1回戦</p>
+            <p data-js="game-title">1本先取</p>
         </div>
         <div class="game__container">
             <div class="game__message">
-                <p data-js="game-message">じゃんけんを始めてください</p>
+                <p data-js="game-message">先取回数を設定してください</p>
             </div>
             <div class="game__inner">
                 <div class="game__space">
-                    <div class="game__status">
-                        <p class="game__statusText" data-js="game-myStatus">0勝</p>
-                    </div>
+                    <p class="game__statusText" data-js="game-myStatus">0勝</p>
                     <form class="game__handList" >
                         <label>
                             <span class="game__hand">グー</span><input checked class="game__radio" type="radio" name="hand" value="stone" data-js='input-hand'>
@@ -35,7 +50,7 @@
                             <span class="game__hand">パー</span><input class="game__radio" type="radio" name="hand" value="paper" data-js='input-hand'>
                         </label>
                     </form>
-                    <button class="game__btn game__btn--submit" data-js="submit-btn">じゃんけんする</button>
+                    <button class="game__btn game__btn--submit" data-js="submit-btn" disabled>じゃんけんする</button>
                 </div>
                 <div class="game__gameField">
                     <img class="game__gameFieldImg" src="./img/stone.jpg" alt="stone" data-js="my-hand">
@@ -43,16 +58,28 @@
                     <img class="game__gameFieldImg" src="./img/stone.jpg" alt="stone" data-js="cpu-hand">
                 </div>
                 <div class="game__space">
-                    <div class="game__status">
-                        <p class="game__statusText" data-js="game-cpuStatus">0勝</p>
-                    </div>
+                    <p class="game__statusText" data-js="game-cpuStatus">0勝</p>
                 </div>
             </div>
             <div class="game__reset">
                 <button class="game__btn game__btn--reset" data-js="reset-btn">じゃんけんをリセット</button>
             </div>
         </div>
-    </main>
+    </section>
+    <section class="howto">
+        <div class="howto__container">
+            <h2 class="howto__title">遊び方</h2>
+            <p class="howto__subtitle">ルール</p>
+            <p class="howto__content">コンピュータより多く勝ったら勝ちです。</p>
+            <p class="howto__subtitle">手順</p>
+            <p class="howto__content">何本先取にするか回数を選択し【先取回数の設定】を押してください。</p>
+            <p class="howto__content">出す手を選択し【じゃんけんする】を押してください。</p>
+            <p class="howto__content">結果が表示され、勝ち数が加算されます。</p>
+            <p class="howto__content">どちらかの勝利数が上記で選択した回数になるまで繰り返してください。</p>
+            <p class="howto__content">勝敗がついた後、続けて遊ぶ場合は【もう一度遊ぶ】を押してください。</p>
+            <p class="howto__content">勝負の途中でやり直したい時は【じゃんけんをリセット】を押してください。</p>
+        </div>
+    </section>
     <script src="./app.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const setBtn = document.querySelector('[data-js=set-btn]');
     const inputHand = document.querySelectorAll('[data-js=input-hand]');
     const resetBtn = document.querySelector('[data-js=reset-btn]');
     const submitBtn = document.querySelector('[data-js=submit-btn]');
@@ -8,12 +9,21 @@ document.addEventListener('DOMContentLoaded', function() {
     const cpuStatus = document.querySelector('[data-js=game-cpuStatus]');
     const imgMyHand = document.querySelector('[data-js=my-hand]');
     const imgCpuHand = document.querySelector('[data-js=cpu-hand]');
+    const settingTimes = document.querySelector('[data-js=setting-times]');
 
+    let setWinTimes = 1;
     let myHand;
     let cpuHand;
     let myWinTimes = 0;
     let cpuWinTimes = 0;
-    let gameTimes = 1;
+
+    function setGame() {
+        setWinTimes = Number(settingTimes.value);
+        submitBtn.removeAttribute('disabled');
+        setBtn.setAttribute("disabled", "");
+        gameTitle.textContent = `${setWinTimes}本先取`;
+        gameMessage.textContent = "じゃんけんを始めてください";
+    }
 
     function showMyHnad() {
         for (let i = 0; i < 3; i +=1 ){
@@ -58,19 +68,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if(myHand === cpuHand){
             gameMessage.textContent = "あいこです！";
         }
-        gameTitle.textContent = `${gameTimes}回戦`;
-        gameTimes += 1;
-
     }
 
     function judgeGame(){
-        if(myWinTimes === 2) {
-            gameMessage.textContent = "コンピュータに勝ちました！";
+        if(myWinTimes === setWinTimes) {
+            gameMessage.textContent = "おめでとうございます！勝ちました！";
             submitBtn.setAttribute("disabled", "true");
             resetBtn.textContent = "もう一度遊ぶ";
         }
-        if(cpuWinTimes === 2) {
-            gameMessage.textContent = "コンピュータに負けました！";
+        if(cpuWinTimes  === setWinTimes) {
+            gameMessage.textContent = "残念、負けました！";
             submitBtn.setAttribute("disabled", "");
             resetBtn.textContent = "もう一度遊ぶ";
         }
@@ -81,15 +88,16 @@ document.addEventListener('DOMContentLoaded', function() {
         cpuHand = "";
         myWinTimes = 0;
         cpuWinTimes = 0;
-        gameTimes = 1;
-        gameTitle.textContent = `${gameTimes}回戦`;
+        setWinTimes = 1;
+        gameTitle.textContent = `${setWinTimes}回戦`;
         gameMessage.textContent = "じゃんけんを始めてください";
         myStatus.textContent = `${myWinTimes}勝`;
         cpuStatus.textContent = `${cpuWinTimes}勝`;
         imgMyHand.setAttribute("src","./img/stone.jpg");
         imgCpuHand.setAttribute("src","./img/stone.jpg");
-        submitBtn.removeAttribute("disabled");
         resetBtn.textContent = "じゃんけんをリセット";
+        submitBtn.setAttribute("disabled", "");
+        setBtn.removeAttribute('disabled');
     }
 
     function initRadio() {
@@ -97,15 +105,17 @@ document.addEventListener('DOMContentLoaded', function() {
             elem.checked = false
         });
         inputHand[0].checked = true;
-
     }
+
+    setBtn.addEventListener('click', ()=> {
+        setGame();
+    });
 
     submitBtn.addEventListener('click', ()=> {
         showMyHnad();
         showCpuHnad();
         judgeHand();
         judgeGame();
-        initRadio();
     });
 
     resetBtn.addEventListener('click', ()=> {
