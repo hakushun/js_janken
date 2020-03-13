@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./reset.css">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>じゃんけんゲーム</title>
+</head>
+<body>
+    <header class="header">
+        <h1 class="header__title">じゃんけんゲームへようこそ</h1>
+    </header>
+    <main class="game">
+        <div class="game__title">
+            <p data-js="game-title">1回戦</p>
+        </div>
+        <div class="game__container">
+            <div class="game__message">
+                <p data-js="game-message">じゃんけんを始めてください</p>
+            </div>
+            <div class="game__inner">
+                <div class="game__space">
+                    <div class="game__status">
+                        <p class="game__statusText" data-js="game-myStatus">0勝</p>
+                    </div>
+                    <form class="game__handList" >
+                        <label>
+                            <span class="game__hand">グー</span><input checked class="game__radio" type="radio" name="hand" value="stone" data-js='input-hand'>
+                        </label>
+                        <label>
+                            <span class="game__hand">チョキ</span><input class="game__radio" type="radio" name="hand" value="scissors" data-js='input-hand'>
+                        </label>
+                        <label>
+                            <span class="game__hand">パー</span><input class="game__radio" type="radio" name="hand" value="paper" data-js='input-hand'>
+                        </label>
+                    </form>
+                    <button class="game__btn game__btn--submit" data-js="submit-btn">じゃんけんする</button>
+                </div>
+                <div class="game__gameField">
+                    <img class="game__gameFieldImg" src="./img/stone.jpg" alt="stone" data-js="my-hand">
+                    <img class="game__gameFieldImg game__gameFieldImg--small" src="./img/text_versus_vs.png" alt="versus">
+                    <img class="game__gameFieldImg" src="./img/stone.jpg" alt="stone" data-js="cpu-hand">
+                </div>
+                <div class="game__space">
+                    <div class="game__status">
+                        <p class="game__statusText" data-js="game-cpuStatus">0勝</p>
+                    </div>
+                </div>
+            </div>
+            <div class="game__reset">
+                <button class="game__btn game__btn--reset" data-js="reset-btn">じゃんけんをリセット</button>
+            </div>
+        </div>
+    </main>
+    <script src="./app.js"></script>
+</body>
+</html>
