@@ -40,13 +40,13 @@
                 <div class="game__space">
                     <p class="game__statusText" data-js="game-myStatus">0勝</p>
                     <form class="game__handList" >
-                        <label>
+                        <label class="game__handItems">
                             <span class="game__hand">グー</span><input checked class="game__radio" type="radio" name="hand" value="stone" data-js='input-hand'>
                         </label>
-                        <label>
+                        <label class="game__handItems">
                             <span class="game__hand">チョキ</span><input class="game__radio" type="radio" name="hand" value="scissors" data-js='input-hand'>
                         </label>
-                        <label>
+                        <label class="game__handItems">
                             <span class="game__hand">パー</span><input class="game__radio" type="radio" name="hand" value="paper" data-js='input-hand'>
                         </label>
                     </form>
@@ -70,7 +70,7 @@
         <div class="howto__container">
             <h2 class="howto__title">遊び方</h2>
             <p class="howto__subtitle">ルール</p>
-            <p class="howto__content">コンピュータより多く勝ったら勝ちです。</p>
+            <p class="howto__content">設定した回数分先取したら勝ちです。</p>
             <p class="howto__subtitle">手順</p>
             <p class="howto__content">何本先取にするか回数を選択し【先取回数の設定】を押してください。</p>
             <p class="howto__content">出す手を選択し【じゃんけんする】を押してください。</p>
