@@ -73,8 +73,11 @@
 .game__handList {
     display: flex;
     justify-content: space-around;
-    vertical-align: text-top;
     margin-top: 40px;
+}
+.game__handItems{
+    display: flex;
+    align-items: center;
 }
 
 .game__hand{
@@ -83,9 +86,9 @@
 }
 
 .game__radio {
-    vertical-align: text-top;
     cursor: pointer;
     margin-left: 5px;
+    font-size: 2rem;
 }
 
 .game__gameField {

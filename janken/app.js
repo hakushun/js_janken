@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function setGame() {
         setWinTimes = Number(settingTimes.value);
         submitBtn.removeAttribute('disabled');
-        setBtn.setAttribute("disabled", "");
+        setBtn.setAttribute("disabled", "true");
         gameTitle.textContent = `${setWinTimes}本先取`;
         gameMessage.textContent = "じゃんけんを始めてください";
     }
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if(cpuWinTimes  === setWinTimes) {
             gameMessage.textContent = "残念、負けました！";
-            submitBtn.setAttribute("disabled", "");
+            submitBtn.setAttribute("disabled", "true");
             resetBtn.textContent = "もう一度遊ぶ";
         }
     }
@@ -89,36 +89,36 @@ document.addEventListener('DOMContentLoaded', function() {
         myWinTimes = 0;
         cpuWinTimes = 0;
         setWinTimes = 1;
-        gameTitle.textContent = `${setWinTimes}回戦`;
-        gameMessage.textContent = "じゃんけんを始めてください";
+        gameTitle.textContent = `${setWinTimes}本先取`;
+        gameMessage.textContent = "先取回数を設定してください";
         myStatus.textContent = `${myWinTimes}勝`;
         cpuStatus.textContent = `${cpuWinTimes}勝`;
         imgMyHand.setAttribute("src","./img/stone.jpg");
         imgCpuHand.setAttribute("src","./img/stone.jpg");
         resetBtn.textContent = "じゃんけんをリセット";
-        submitBtn.setAttribute("disabled", "");
+        submitBtn.setAttribute("disabled", "true");
         setBtn.removeAttribute('disabled');
     }
 
     function initRadio() {
         inputHand.forEach (elem => {
-            elem.checked = false
+            elem.checked = false;
         });
         inputHand[0].checked = true;
     }
 
-    setBtn.addEventListener('click', ()=> {
+    setBtn.addEventListener('click', () => {
         setGame();
     });
 
-    submitBtn.addEventListener('click', ()=> {
+    submitBtn.addEventListener('click', () => {
         showMyHnad();
         showCpuHnad();
         judgeHand();
         judgeGame();
     });
 
-    resetBtn.addEventListener('click', ()=> {
+    resetBtn.addEventListener('click', () => {
         resetGame();
         initRadio();
     });
