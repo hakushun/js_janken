@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     DOM.submitBtn.addEventListener('click', () => {
         Controller.showHand(my, cpu);
         View.changeImg(my, cpu);
-        Controller.judgeHand(my, cpu);
+        Controller.judgeHand(my, cpu, game);
         View.viewResult(my, cpu);
         View.viewGameResult(my, cpu, game);
         Controller.culcWinRate(my, cpu, game);

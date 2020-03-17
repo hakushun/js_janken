@@ -28,30 +28,38 @@ export class Controller {
         }
     }
 
-    static _incrementTimes(player) {
-        DOM.totalGameTimes += 1;
+    static _incrementTimes(player, game) {
+        game.totalGameTimes += 1;
         player.winTimes += 1;
         player.totalWinTimes += 1;
     }
 
-    static judgeHand(player1, player2) {
+    static judgeHand(player1, player2, game) {
         if((player1.hand === "stone" && player2.hand === "scissors")
         ||(player1.hand === "scissors" && player2.hand === "paper")
         ||(player1.hand === "paper" && player2.hand === "stone")) {
-            this._incrementTimes(player1);
+            this._incrementTimes(player1, game);
         }
         if((player2.hand === "stone" && player1.hand === "scissors")
         ||(player2.hand === "scissors" && player1.hand === "paper")
         ||(player2.hand === "paper" && player1.hand === "stone")){
-            this._incrementTimes(player2);
+            this._incrementTimes(player2, game);
         }
     }
 
     static culcWinRate(player1, player2, game) {
-        player1.winRate = Math.round(player1.totalWinTimes / game.totalGameTimes *10000) / 100;
-        player2.winRate = Math.round(player2.totalWinTimes / game.totalGameTimes *10000) / 100;
-        console.log(player1.winRate);
-        console.log(player2.winRate);
+        console.log(player1.totalWinTimes, game.totalGameTimes);
+        console.log(player2.totalWinTimes, game.totalGameTimes);
+
+        player1.winRate = Math.round(player1.totalWinTimes / game.totalGameTimes * 10000) / 100;
+        player2.winRate = Math.round(player2.totalWinTimes / game.totalGameTimes * 10000) / 100;
+
+        if(!player1.winRate){
+            player1.winRate = 0 ;
+        }
+        if(!player2.winRate){
+            player2.winRate = 0 ;
+        }
     }
 
     static resetGame(player1, player2, game){
