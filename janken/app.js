@@ -10,11 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const imgMyHand = document.querySelector('[data-js=my-hand]');
     const imgCpuHand = document.querySelector('[data-js=cpu-hand]');
     const settingTimes = document.querySelector('[data-js=setting-times]');
-    const myWinRate = document.querySelector('[data-js=my-winRate]');
-    const cpuWinRate = document.querySelector('[data-js=cpu-winRate]');
+    // const myWinRate = document.querySelector('[data-js=my-winRate]');
+    // const cpuWinRate = document.querySelector('[data-js=cpu-winRate]');
 
 
-    let setWinTimes = 1;
+    let firstWinTimes = 1;
     let myHand;
     let cpuHand;
     let myWinTimes = 0;
@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', function() {
     let totalGameTimes = 0;
 
     function setGame() {
-        setWinTimes = Number(settingTimes.value);
+        firstWinTimes = Number(settingTimes.value);
         submitBtn.removeAttribute('disabled');
         setBtn.setAttribute("disabled", "true");
-        gameTitle.textContent = `${setWinTimes}本先取`;
+        gameTitle.textContent = `${firstWinTimes}本先取`;
         gameMessage.textContent = "じゃんけんを始めてください";
     }
 
@@ -88,12 +88,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function judgeGame(){
-        if(myWinTimes === setWinTimes) {
+        if(myWinTimes === firstWinTimes) {
             gameMessage.textContent = "おめでとうございます！勝ちました！";
             submitBtn.setAttribute("disabled", "true");
             resetBtn.textContent = "もう一度遊ぶ";
         }
-        if(cpuWinTimes  === setWinTimes) {
+        if(cpuWinTimes  === firstWinTimes) {
             gameMessage.textContent = "残念、負けました！";
             submitBtn.setAttribute("disabled", "true");
             resetBtn.textContent = "もう一度遊ぶ";
@@ -105,8 +105,8 @@ document.addEventListener('DOMContentLoaded', function() {
         cpuHand = "";
         myWinTimes = 0;
         cpuWinTimes = 0;
-        setWinTimes = 1;
-        gameTitle.textContent = `${setWinTimes}本先取`;
+        firstWinTimes = 1;
+        gameTitle.textContent = `${firstWinTimes}本先取`;
         gameMessage.textContent = "先取回数を設定してください";
         myStatus.textContent = `${myWinTimes}勝`;
         cpuStatus.textContent = `${cpuWinTimes}勝`;
