@@ -10,12 +10,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const imgMyHand = document.querySelector('[data-js=my-hand]');
     const imgCpuHand = document.querySelector('[data-js=cpu-hand]');
     const settingTimes = document.querySelector('[data-js=setting-times]');
+    const myWinRate = document.querySelector('[data-js=my-winRate]');
+    const cpuWinRate = document.querySelector('[data-js=cpu-winRate]');
+
 
     let setWinTimes = 1;
     let myHand;
     let cpuHand;
     let myWinTimes = 0;
     let cpuWinTimes = 0;
+    let myTotalWinTimes = 0;
+    let cpuTotalWinTimes = 0;
+    let totalGameTimes = 0;
 
     function setGame() {
         setWinTimes = Number(settingTimes.value);
@@ -50,20 +56,31 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // function culcWinRate(winTotalTimes, totalGameTimes) {
+    //     let winRate = Math.round((winTotalTimes/totalGameTimes)*10000)/100;
+    //     return winRate;
+    // }
+
     function judgeHand() {
         if((myHand === "stone" && cpuHand === "scissors")
         ||(myHand === "scissors" && cpuHand === "paper")
         ||(myHand === "paper" && cpuHand === "stone")) {
             myWinTimes += 1;
+            myTotalWinTimes += 1;
+            totalGameTimes +=1;
             gameMessage.textContent = "あなたの勝ちです！";
             myStatus.textContent = `${myWinTimes}勝`;
+            // myWinRate.textContent = `あなた：通算${myTotalWinTimes}勝／勝率${culcWinRate(myTotalWinTimes, totalGameTimes)}％`
         }
         if((cpuHand === "stone" && myHand === "scissors")
         ||(cpuHand === "scissors" && myHand === "paper")
         ||(cpuHand === "paper" && myHand === "stone")){
             cpuWinTimes += 1;
+            cpuTotalWinTimes += 1;
+            totalGameTimes +=1;
             gameMessage.textContent = "コンピュータの勝ちです！";
             cpuStatus.textContent = `${cpuWinTimes}勝`;
+            // cpuWinRate.textContent = `CPU：通算${cpuTotalWinTimes}勝／勝率${culcWinRate(cpuTotalWinTimes, totalGameTimes)}％`
         }
         if(myHand === cpuHand){
             gameMessage.textContent = "あいこです！";

@@ -109,7 +109,12 @@
     height: 70%;
     padding: 0 10px;
 }
-
+.game__winRate {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    font-size: 2.2rem;;
+}
 .game__btn {
     display: block;
     width: 200px;
